@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<div>
+    <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{/logout}" method="post"
+          class="form-inline" >
+        <a  id="logout" &nbsp; href="javascript:{}"
+            onclick="document.getElementById('frmlogout').submit(); return false;" style="color:#080808" class="glyphicon glyphicon-log-out">Logout</a>
+    </form>
+</div>
+
+<div class="container">
+    <table class="css-serial">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Task Name</th>
+            <th>Task Description</th>
+            <th>Task Added</th>
+            <th>Status</th>
+            <th>Delete</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+
+            <td th:text="${task.id}"></td>
+
+            <td th:text="${task.task_name}"></td>
+
+
+            <td  th:text="${task.task_description}"></td>
+
+
+            <td th:text="${task.taskAdd}"></td>
+
+
+            <td><a class="glyphicon glyphicon-ok-circle" id="Status" onclick="myFunction()" style="color:#ac2925"></a>
+
+                <script>
+                    function myFunction() {
+                        document.getElementById("Status").style.color = "green";
+                    }
+                </script>
+
+
+            </td>
+
+            <td><a href="#" th:href="@{/task/delete/} + ${task.id}" class="glyphicon glyphicon-trash" type="submit" style="color:#000000"></a>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <div class="add">
+        <h3><a href="#" th:href="@{/create}" style="color:#000000" class="glyphicon glyphicon-plus">NewTask</a></h3>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
