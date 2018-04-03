@@ -2,8 +2,10 @@
 
 # Simple "todolist" web app made using Spring Boot
 *Login details:
-*admin
-*pass: admin
+
+*Username: admin
+
+*Password: admin
 
 ![](images/1.png)
 ![](images/2.png)
